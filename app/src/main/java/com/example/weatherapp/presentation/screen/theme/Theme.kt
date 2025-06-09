@@ -1,4 +1,4 @@
-package com.example.weatherapp.ui.theme
+package com.example.weatherapp.presentation.screen.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -12,6 +12,9 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import com.example.weatherapp.presentation.screen.composable.WeatherPath
+import com.example.weatherapp.presentation.screen.composable.lightIconPath
+import com.example.weatherapp.presentation.screen.composable.nightIconPath
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -72,13 +75,19 @@ fun WeatherAppTheme(
     )
 }
 
-//val LocalWeatherColorScheme = staticCompositionLocalOf { lightWeatherThemeColors() }
-val LocalWeatherColorScheme = staticCompositionLocalOf { darkWeatherThemeColors() }
+val LocalWeatherColorScheme = staticCompositionLocalOf { lightWeatherThemeColors() }
+val LocalWeatherCodeToIcon = staticCompositionLocalOf{ lightIconPath() }
+
+//val LocalWeatherColorScheme = staticCompositionLocalOf { darkWeatherThemeColors() }
+//val LocalWeatherCodeToIcon = staticCompositionLocalOf{ nightIconPath() }
 
 object WeatherTheme {
     val colorScheme: WeatherColorScheme
         @Composable
         get() = LocalWeatherColorScheme.current
+    val weatherIconPath: WeatherPath
+        @Composable
+        get() = LocalWeatherCodeToIcon.current
 }
 
 fun darkWeatherThemeColors(
@@ -160,16 +169,16 @@ fun lightWeatherThemeColors(
     statusCardTitleFontColor: Color = Color(0x99060414),
 
     todayLabelFontColor: Color = Color(0xFF060414),
-    todayCardBackgroundColor: Color = Color(0xB2060414),
-    todayCardBorderColor: Color = Color(0x14FFFFFF),
+    todayCardBackgroundColor: Color = Color(0xB2FFFFFF),
+    todayCardBorderColor: Color = Color(0x14060414),
     todayCardValueFontColor: Color = Color(0xDE060414),
     todayCardTitleFontColor: Color = Color(0x99060414),
 
     nextDaysLabelFontColor: Color = Color(0xFF060414),
     nextDaysCardTitleFontColor: Color = Color(0x99060414),
     nextDaysCardValueFontColor: Color = Color(0xDE060414),
-    nextDaysCardValueBorderLineFontColor: Color = Color(0x14FFFFFF),
-    nextDaysCardBorderColor: Color = Color(0x14FFFFFF),
+    nextDaysCardValueBorderLineFontColor: Color = Color(0x14060414),
+    nextDaysCardBorderColor: Color = Color(0x14060414),
     nextDaysCardBackgroundColor: Color = Color(0xB2FFFFFF),
     nextDaysCardIconColor: Color = Color(0x14060414),
 

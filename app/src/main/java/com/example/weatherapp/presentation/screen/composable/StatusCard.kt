@@ -1,4 +1,4 @@
-package com.example.weatherapp.composable
+package com.example.weatherapp.presentation.screen.composable
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -20,8 +20,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.weatherapp.ui.theme.WeatherTheme
-import com.example.weatherapp.ui.theme.urbanistFamily
+import com.example.weatherapp.presentation.screen.theme.WeatherTheme
+import com.example.weatherapp.presentation.screen.theme.urbanistFamily
 
 @Composable
 fun StatusCard(

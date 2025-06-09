@@ -1,4 +1,4 @@
-package com.example.weatherapp.component
+package com.example.weatherapp.presentation.screen.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,14 +11,14 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.example.weatherapp.R
-import com.example.weatherapp.composable.StatusCard
+import com.example.weatherapp.presentation.screen.composable.StatusCard
 import com.example.weatherapp.viewModel.StatusValueViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun WeatherStatus(
     viewModel: StatusValueViewModel = koinViewModel()
-){
+) {
     val state by viewModel.statusValue.collectAsState()
     WeatherStatusContent(
         windValue = state.windValue,

@@ -1,4 +1,4 @@
-package com.example.weatherapp.component
+package com.example.weatherapp.presentation.screen.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,10 +12,10 @@ import androidx.compose.ui.unit.dp
 fun WeatherScaffold(
     appBar: @Composable () -> Unit = {},
     content: @Composable () -> Unit,
-){
+) {
     Column(
         Modifier.fillMaxWidth()
-    ){}
+    ) {}
     Spacer(Modifier.height(40.dp))
     appBar()
     content()
