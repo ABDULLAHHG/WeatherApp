@@ -8,8 +8,8 @@ class GetDailyWeather(
     private val repository: Repository
 
 ) {
-    suspend fun execute(latitude: String, longitude: String , numberOfDays : Int = 7): NextDays {
-        val nextDays =  repository.getDailyWeather(latitude, longitude)
+    suspend fun execute(numberOfDays : Int = 7): NextDays {
+        val nextDays =  repository.getDailyWeather()
         return NextDays(
             nextDays.daysNames.take(numberOfDays),
             nextDays.rangeTemperatures.take(numberOfDays),

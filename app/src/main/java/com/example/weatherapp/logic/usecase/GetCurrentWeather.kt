@@ -7,7 +7,7 @@ class GetCurrentWeather(
     private val repository: Repository
 
 ) {
-    suspend fun execute(latitude: String, longitude: String): Current {
-        return repository.getCurrentWeather(latitude, longitude)
+    suspend fun execute(): Current {
+        return repository.getCurrentWeather()
     }
 }

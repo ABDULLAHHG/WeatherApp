@@ -8,8 +8,8 @@ class GetTodayWeather(
     private val repository: Repository
 
 ) {
-    suspend fun execute(latitude: String, longitude: String): Today {
-        val today =  repository.getTodayWeather(latitude, longitude)
+    suspend fun execute(): Today {
+        val today =  repository.getTodayWeather()
         val todayTime = LocalDateTime.now()
 
         return Today(

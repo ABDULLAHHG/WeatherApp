@@ -10,7 +10,7 @@ class TodayValueViewModel(
     private val  getHourlyWeather : GetTodayWeather
 ) : ViewModel() {
     private val currentWeather = runBlocking {
-        getHourlyWeather.execute("50", "50")
+        getHourlyWeather.execute()
     }
     private val _statusValue = MutableStateFlow(
         WeatherTodayStatusUiState(

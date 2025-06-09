@@ -11,7 +11,7 @@ class WeatherNextDaysViewModel(
     private val getDailyWeather: GetDailyWeather
 ) : ViewModel() {
     private val dailyWeather = runBlocking {
-        getDailyWeather.execute("50", "50")
+        getDailyWeather.execute()
     }
     private val _statusValue = MutableStateFlow(
         WeatherNextDaysUiStates(
