@@ -63,7 +63,7 @@ fun TodayWeatherStatus.toUiState(): WeatherStatusUiState {
     return WeatherStatusUiState(
         windValue = "${windSpeed.toInt()} km/h",
         humidityValue = "$humidity%",
-        rainValue = "${"%.1f".format(rainVolume)} mm",
+        rainValue = "${"%.1f".format(rainVolume)}%",
         pressureValue = "${pressure.toInt()} hPa",
         uvValue = "%.1f".format(uvIndex),
         feelsLikeValue = "${feelsLike.toInt()}°C"

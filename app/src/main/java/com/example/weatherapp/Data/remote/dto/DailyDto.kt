@@ -9,5 +9,6 @@ data class DailyDto(
     val temperature_2m_max: List<Double>,
     val temperature_2m_min: List<Double>,
     val weather_code: List<Int>,
-    val uv_index_max: List<Double>
+    val uv_index_max: List<Double>,
+    val precipitation_probability_max : List<Double>
 )

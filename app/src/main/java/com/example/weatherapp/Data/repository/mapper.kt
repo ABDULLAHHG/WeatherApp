@@ -49,7 +49,7 @@ fun WeatherInfoDto.toWeatherStatus(): TodayWeatherStatus {
     return TodayWeatherStatus(
         windSpeed = current.wind_speed_10m,
         humidity = current.relative_humidity_2m,
-        rainVolume = current.rain,
+        rainVolume = daily.precipitation_probability_max.firstOrNull() ?: 0.0,
         pressure = current.pressure_msl,
         uvIndex = daily.uv_index_max.firstOrNull() ?: 0.0,
         feelsLike = current.apparent_temperature

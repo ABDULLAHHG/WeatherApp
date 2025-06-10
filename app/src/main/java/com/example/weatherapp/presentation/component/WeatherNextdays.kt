@@ -58,9 +58,9 @@ fun WeatherNextDaysContent(state: WeatherNextDaysUiStates) {
             NextDaysCard(
                 dayName = dayName,
                 temperatureRange = state.rangeTemperatures[index],
-                image = painterResource(WeatherCodeMapper.weatherCodeToIcon(state.weatherCode[index]))
+                image = painterResource(WeatherCodeMapper.weatherCodeToIconLightTheme(state.weatherCode[index]))
             )
-            if(index != state.daysNames.size - 1) {
+            if (index != state.daysNames.size - 1) {
                 HorizontalDivider(
                     thickness = 1.dp,
                     color = WeatherTheme.colorScheme.nextDaysCardBorderColor

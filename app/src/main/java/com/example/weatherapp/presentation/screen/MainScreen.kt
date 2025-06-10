@@ -27,6 +27,7 @@ import com.example.weatherapp.presentation.component.WeatherNextDays
 import com.example.weatherapp.presentation.component.WeatherScaffold
 import com.example.weatherapp.presentation.component.WeatherStatus
 import com.example.weatherapp.presentation.component.WeatherToday
+import com.example.weatherapp.presentation.composable.AppBarContent
 import com.example.weatherapp.presentation.theme.WeatherAppTheme
 import com.example.weatherapp.presentation.theme.WeatherTheme
 import com.example.weatherapp.presentation.theme.urbanistFamily
@@ -41,31 +42,7 @@ fun MainScreen() {
     ) {
         item() {
             WeatherScaffold() {
-                Spacer(modifier = Modifier.height(24.dp))
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .wrapContentHeight()
-                        .padding(bottom = 12.dp),
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        imageVector = ImageVector.vectorResource(R.drawable.location),
-                        contentDescription = null,
-                        tint = WeatherTheme.colorScheme.locationIconColor
-                    )
-                    Text(
-                        text = "Location",
-                        color = WeatherTheme.colorScheme.locationFontColor,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight(500),
-                        lineHeight = 20.sp,
-                        fontFamily = urbanistFamily,
-                        letterSpacing = 0.25.sp
-                    )
-
-                }
+                AppBarContent("Location")
             }
             CurrentWeather()
             Spacer(modifier = Modifier.height(24.dp))
