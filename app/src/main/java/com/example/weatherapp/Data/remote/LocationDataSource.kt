@@ -35,7 +35,7 @@ class LocationDataSource(
                 cityName = cityName
             )
         } catch (e: Exception) {
-            throw Exception()
+            throw e
         }
     }
 
