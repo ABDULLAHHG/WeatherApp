@@ -24,7 +24,11 @@ class LocationDataSource(
     @RequiresPermission(allOf = [Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION])
     override suspend fun getCurrentLocation(): LocationInfo {
         return try {
-            val location = fusedLocationClient.lastLocation.await()
+            val location = fusedLocationClient.getCurrentLocation(
+                com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY,
+                null
+
+            ).await()
 
             val safeLocation = location ?: getFreshLocation()
 
