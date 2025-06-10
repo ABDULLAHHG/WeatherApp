@@ -11,7 +11,7 @@ class WeatherStatusViewModel(
     private val getWeatherStatus: GetWeatherStatus
 ) : ViewModel() {
     private val weatherStatus = runBlocking {
-        getWeatherStatus.execute("50", "50")
+        getWeatherStatus.execute("50", "80")
     }
     private val _statusValue = MutableStateFlow(
         weatherStatus.toUiState()

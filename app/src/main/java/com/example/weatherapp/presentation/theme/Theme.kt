@@ -112,8 +112,12 @@ object WeatherTheme {
         get() = LocalWeatherCodeToIcon.current
 }
 
+
+
+
+
 fun darkWeatherThemeColors(
-    backgroundColor: Brush = Brush.linearGradient(listOf(Color(0xFF060414), Color(0xFF0D0C19))),
+    backgroundColor: Brush = Brush.verticalGradient(listOf(Color(0xFF060414), Color(0xFF0D0C19))),
     imageBlurColor: Color = Color(0xFFC0B7FF),
     imageBlurOpacity : Float = 0.2f,
     locationFontColor: Color = Color(0xFFFFFFFF),
@@ -176,7 +180,7 @@ fun darkWeatherThemeColors(
 
 
 fun lightWeatherThemeColors(
-    backgroundColor: Brush = Brush.linearGradient(listOf(Color(0xFF87CEFA), Color(0xFFFFFFFF))),
+    backgroundColor: Brush = Brush.verticalGradient(listOf(Color(0xFF87CEFA), Color(0xFFFFFFFF))),
     imageBlurColor: Color = Color(0xFF00619D),
     imageBlurOpacity : Float = 0.32f,
     locationFontColor: Color = Color(0xFF323232),

@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -24,12 +23,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color.Companion.Transparent
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -68,10 +63,20 @@ fun CurrentWeatherContent(
             modifier = Modifier
                 .size(250.dp)
                 .clip(CircleShape)
-                .background(brush = Brush.radialGradient(listOf(WeatherTheme.colorScheme.imageBlurColor.copy(alpha = 0.32f), WeatherTheme.colorScheme.imageBlurColor.copy(alpha = 0.32f*0.7f), WeatherTheme.colorScheme.imageBlurColor.copy(alpha = 0.32f*0.01f))))
-                .blur(radius = 75.dp,)
+                .background(
+                    brush = Brush.radialGradient(
+                        listOf(
+                            WeatherTheme.colorScheme.imageBlurColor.copy(
+                                alpha = WeatherTheme.colorScheme.imageBlurOpacity
+                            ),
+                            WeatherTheme.colorScheme.imageBlurColor.copy(alpha = WeatherTheme.colorScheme.imageBlurOpacity * 0.7f),
+                            WeatherTheme.colorScheme.imageBlurColor.copy(alpha = WeatherTheme.colorScheme.imageBlurOpacity * 0.01f)
+                        )
+                    )
+                )
+                .blur(radius = 150.dp)
                 .align(Alignment.TopCenter)
-                .offset(y = -100.dp))
+        )
 
 
         Column(

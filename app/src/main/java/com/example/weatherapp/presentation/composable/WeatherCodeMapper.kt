@@ -29,6 +29,30 @@ object WeatherCodeMapper {
         }
     }
 
+    @Composable
+    fun weatherCodeToIconLightTheme(weatherCode: String): Int {
+        return when (weatherCode) {
+            "0" ->  R.drawable.clear_sky
+            "1" -> R.drawable.mainly_clear
+            "3" -> R.drawable.overcast
+            "45" -> R.drawable.fog
+            "48" -> R.drawable.depositing_rime_fog
+            "51" -> R.drawable.drizzle_light
+            "53" -> R.drawable.drizzle_moderate
+            "55" -> R.drawable.drizzle_intensity
+//            "56", "57" -> R.drawable.freezing_drizzle_light// Freezing Drizzle: Light and dense intensity
+//            "61", "63", "65" -> R.drawable.rain // Rain: Slight, moderate and heavy intensity
+//            "66", "67" -> R.drawable.freezing_rain // Freezing Rain: Light and heavy intensity
+//            "71", "73", "75" -> R.drawable.snowfall // Snow fall: Slight, moderate, and heavy intensity
+//            "77" -> R.drawable.snow_grains // Snow grains
+//            "80", "81", "82" -> R.drawable.rain_showers // Rain showers: Slight, moderate, and violent
+//            "85", "86" -> R.drawable.snow_showers // Snow showers slight and heavy
+//            "95" -> R.drawable.thunderstorm // Thunderstorm: Slight or moderate
+//            "96", "99" -> R.drawable.thunderstorm_with_hail // Thunderstorm with slight and heavy hail
+            else -> R.drawable.clear_sky // Default icon for unknown weather codes
+        }
+    }
+
     fun weatherCodeToDescription(weatherCode: Int): String {
         return when (weatherCode) {
             0 -> "Clear sky"
@@ -61,7 +85,6 @@ object WeatherCodeMapper {
         }
     }
 }
-
 
 fun lightIconPath(
     clearSky: Int = R.drawable.clear_sky,
