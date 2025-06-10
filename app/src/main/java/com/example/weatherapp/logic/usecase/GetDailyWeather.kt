@@ -11,9 +11,7 @@ class GetDailyWeather(
     suspend fun execute(latitude: String, longitude: String , numberOfDays : Int = 7): NextDays {
         val nextDays =  repository.getDailyWeather(latitude, longitude)
         return NextDays(
-            nextDays.daysNames.take(numberOfDays),
-            nextDays.rangeTemperatures.take(numberOfDays),
-            nextDays.weatherType.take(numberOfDays)
+            daysWeather = nextDays.daysWeather.take(numberOfDays)
         )
     }
 }

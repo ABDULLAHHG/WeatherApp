@@ -2,7 +2,6 @@ package com.example.weatherapp.presentation.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,14 +22,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.R
-import com.example.weatherapp.presentation.screen.component.CurrentWeather
-import com.example.weatherapp.presentation.screen.component.WeatherNextDays
-import com.example.weatherapp.presentation.screen.component.WeatherScaffold
-import com.example.weatherapp.presentation.screen.component.WeatherStatus
-import com.example.weatherapp.presentation.screen.component.WeatherToday
-import com.example.weatherapp.presentation.screen.theme.WeatherAppTheme
-import com.example.weatherapp.presentation.screen.theme.WeatherTheme
-import com.example.weatherapp.presentation.screen.theme.urbanistFamily
+import com.example.weatherapp.presentation.component.CurrentWeather
+import com.example.weatherapp.presentation.component.WeatherNextDays
+import com.example.weatherapp.presentation.component.WeatherScaffold
+import com.example.weatherapp.presentation.component.WeatherStatus
+import com.example.weatherapp.presentation.component.WeatherToday
+import com.example.weatherapp.presentation.theme.WeatherAppTheme
+import com.example.weatherapp.presentation.theme.WeatherTheme
+import com.example.weatherapp.presentation.theme.urbanistFamily
 
 @Composable
 fun MainScreen() {
