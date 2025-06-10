@@ -7,7 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresPermission
 import com.example.weatherapp.presentation.screen.MainScreen
-import com.example.weatherapp.presentation.screen.theme.WeatherAppTheme
+import com.example.weatherapp.presentation.theme.WeatherAppTheme
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
