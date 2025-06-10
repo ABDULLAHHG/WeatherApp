@@ -1,24 +1,51 @@
-package com.example.weatherapp
+package com.sanaa.myweather.presentation.viewModel
 
-import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.ext.junit.runners.AndroidJUnit4
+import android.Manifest
+import androidx.annotation.RequiresPermission
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.sanaa.myweather.domain.repository.LocationRepository
+import com.sanaa.myweather.domain.usecase.GetWeatherInfoUseCase
+import com.sanaa.myweather.presentation.viewModel.mapper.mapWeatherInfoToWeatherStateUi
+import com.sanaa.myweather.presentation.viewModel.state.WeatherUiState
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
-import org.junit.Test
-import org.junit.runner.RunWith
 
-import org.junit.Assert.*
+class WeatherViewModel(
+    private val getWeatherInfoUseCase: GetWeatherInfoUseCase,
+    private val locationRepository: LocationRepository
+) : ViewModel() {
 
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-@RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
-    @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.weatherapp", appContext.packageName)
+    private val _state = MutableStateFlow<WeatherUiState>(WeatherUiState.Loading)
+    val state = _state.asStateFlow()
+
+    @RequiresPermission(
+        allOf = [
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        ]
+    )
+    fun loadWeather() {
+        viewModelScope.launch {
+            _state.value = WeatherUiState.Loading
+            try {
+                val location = locationRepository.getCurrentLocation()
+                val weatherInfo = getWeatherInfoUseCase.getCurrentWeather(
+                    lat = location.latitude,
+                    long = location.longitude
+                )
+                _state.value =
+                    WeatherUiState.Success(
+                        weatherUiInfo = mapWeatherInfoToWeatherStateUi(
+                            weatherInfo = weatherInfo,
+                            cityName = location.cityName
+                        )
+                    )
+            } catch (e: Exception) {
+                _state.value = WeatherUiState.Error(e.message ?: "Unknown error")
+            }
+        }
     }
 }

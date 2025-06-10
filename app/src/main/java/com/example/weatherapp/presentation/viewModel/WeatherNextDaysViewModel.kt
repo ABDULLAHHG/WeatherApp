@@ -1,5 +1,7 @@
 package com.example.weatherapp.presentation.viewModel
 
+import android.Manifest
+import androidx.annotation.RequiresPermission
 import androidx.lifecycle.ViewModel
 import com.example.weatherapp.logic.usecase.GetDailyWeather
 import com.example.weatherapp.presentation.viewModel.mapper.toUiState

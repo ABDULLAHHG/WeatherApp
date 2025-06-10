@@ -1,5 +1,7 @@
 package com.example.weatherapp.presentation.viewModel
 
+import android.Manifest
+import androidx.annotation.RequiresPermission
 import androidx.lifecycle.ViewModel
 import com.example.weatherapp.logic.usecase.GetCurrentWeather
 import com.example.weatherapp.presentation.viewModel.mapper.toUiState
@@ -10,6 +12,7 @@ import kotlinx.coroutines.runBlocking
 class CurrentWeatherViewModel(
     private val getCurrentWeather: GetCurrentWeather
 ) : ViewModel() {
+
     private val currentWeather = runBlocking {
         getCurrentWeather.execute()
     }

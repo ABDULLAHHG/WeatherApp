@@ -1,5 +1,7 @@
 package com.example.weatherapp.presentation.viewModel
 
+import android.Manifest
+import androidx.annotation.RequiresPermission
 import androidx.lifecycle.ViewModel
 import com.example.weatherapp.logic.usecase.GetTodayHourlyTheme
 import com.example.weatherapp.logic.usecase.GetTodayHourlyWeather
@@ -12,8 +14,9 @@ import kotlinx.coroutines.runBlocking
 class TodayHourlyThemeViewModel(
     private val  getTodayHourlyTheme : GetTodayHourlyTheme
 ) : ViewModel() {
+
     private val hourlyWeather = runBlocking {
-        getTodayHourlyTheme.execute("-80.5586100", "80")
+        getTodayHourlyTheme.execute()
     }
     private val _statusValue = MutableStateFlow(
         hourlyWeather
