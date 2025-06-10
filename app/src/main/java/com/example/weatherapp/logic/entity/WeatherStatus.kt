@@ -1,10 +1,10 @@
 package com.example.weatherapp.logic.entity
 
-data class WeatherStatus (
-    val windValue : String,
-    val humidityValue : String,
-    val rainValue : String,
-    val pressureValue : String,
-    val uvValue : String,
-    val feelsLikeValue : String
+data class WeatherStatus(
+    val windSpeed: Double,      // km/h
+    val humidity: Int,          // %
+    val rainVolume: Double,     // mm
+    val pressure: Double,       // hPa
+    val uvIndex: Double,
+    val feelsLike: Double
 )

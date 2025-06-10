@@ -2,10 +2,13 @@ package com.example.weatherapp.Data.local
 
 import com.example.weatherapp.Data.remote.WeatherApi
 import com.example.weatherapp.logic.entity.Current
+import com.example.weatherapp.logic.entity.HourlyWeather
 import com.example.weatherapp.logic.entity.NextDays
-import com.example.weatherapp.logic.entity.Today
+import com.example.weatherapp.logic.entity.TodayHourlyWeather
 import com.example.weatherapp.logic.entity.WeatherStatus
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class WeatherDataSource(
     private val weatherApi: WeatherApi,
@@ -24,13 +27,18 @@ class WeatherDataSource(
 
     }
 
-    suspend fun getTodayWeather(latitude: String, longitude: String): Today {
+    suspend fun getTodayWeather(latitude: String, longitude: String): List<HourlyWeather> {
         val weatherResponse = weatherApi.getWeather(latitude, longitude)
-        return Today(
-            weatherType = weatherResponse.hourly.weather_code,
-            temperatures = weatherResponse.hourly.temperature_2m,
-            weatherTime = weatherResponse.hourly.time
-        )
+        val formatter = DateTimeFormatter.ISO_DATE_TIME
+
+        return weatherResponse.hourly.time.indices.map { index ->
+            HourlyWeather(
+                time = LocalDateTime.parse(weatherResponse.hourly.time[index], formatter),
+                temperature = weatherResponse.hourly.temperature_2m[index],
+                weatherCode = weatherResponse.hourly.weather_code[index],
+                isDay = weatherResponse.hourly.is_day[index] == 1
+            )
+        }
     }
 
     suspend fun getStatusWeather(latitude: String, longitude: String): WeatherStatus {
