@@ -1,6 +1,6 @@
-package com.example.weatherapp.Data.remote
+package com.example.weatherapp.data.remote
 
-import com.example.weatherapp.Data.remote.dto.WeatherInfoDto
+import com.example.weatherapp.data.remote.dto.WeatherInfoDto
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
@@ -11,9 +11,8 @@ import io.ktor.client.statement.HttpResponse
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonNamingStrategy
 
-class WeatherApi {
+class WeatherApi(url: String) {
 
     @OptIn(ExperimentalSerializationApi::class)
     private val client = HttpClient(CIO) {
@@ -22,7 +21,6 @@ class WeatherApi {
                 ignoreUnknownKeys = true
                 isLenient = true
                 encodeDefaults = true
-//                namingStrategy = JsonNamingStrategy.SnakeCase
             })
         }
     }

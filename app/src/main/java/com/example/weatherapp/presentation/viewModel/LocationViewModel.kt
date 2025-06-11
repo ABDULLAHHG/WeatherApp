@@ -2,37 +2,34 @@ package com.example.weatherapp.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.weatherapp.logic.entity.HourlyWeather
-import com.example.weatherapp.logic.usecase.GetTodayHourlyTheme
-import com.example.weatherapp.presentation.viewModel.mapper.toUiState
+import com.example.weatherapp.logic.usecase.GetLocationUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import java.time.LocalDateTime
 
 
-class TodayHourlyThemeViewModel(
-    private val getTodayHourlyTheme: GetTodayHourlyTheme
+class LocationViewModel(
+    private val getLocationUseCase: GetLocationUseCase
 ) : ViewModel() {
 
 
     private val _statusValue = MutableStateFlow(
-            true
+        "Location"
     )
     val statusValue = _statusValue.asStateFlow()
 
 
     init {
-        getTodayHourlyTheme()
+        getLocation()
     }
-    private fun getTodayHourlyTheme() {
+
+    private fun getLocation() {
         viewModelScope.launch(Dispatchers.IO) {
-            getTodayHourlyTheme.execute().let { state ->
+            getLocationUseCase.execute().let { state ->
                 _statusValue.update {
-                    state
+                    state.cityName
                 }
             }
         }

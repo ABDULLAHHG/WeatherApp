@@ -1,9 +1,9 @@
-package com.example.weatherapp.Data.local
+package com.example.weatherapp.data.local
 
-import com.example.weatherapp.Data.remote.WeatherApi
-import com.example.weatherapp.Data.remote.dto.DailyDto
-import com.example.weatherapp.Data.remote.dto.HourlyDto
-import com.example.weatherapp.Data.remote.dto.WeatherInfoDto
+import com.example.weatherapp.data.remote.WeatherApi
+import com.example.weatherapp.data.remote.dto.DailyDto
+import com.example.weatherapp.data.remote.dto.HourlyDto
+import com.example.weatherapp.data.remote.dto.WeatherInfoDto
 
 class WeatherDataSource(
     private val weatherApi: WeatherApi,

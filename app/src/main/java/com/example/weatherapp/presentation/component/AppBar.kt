@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.composable
+package com.example.weatherapp.presentation.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -20,9 +22,19 @@ import androidx.compose.ui.unit.sp
 import com.example.weatherapp.R
 import com.example.weatherapp.presentation.theme.WeatherTheme
 import com.example.weatherapp.presentation.theme.urbanistFamily
+import com.example.weatherapp.presentation.viewModel.LocationViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun AppBarContent(text: String){
+fun AppBar(
+    viewModel: LocationViewModel = koinViewModel()
+) {
+    val state by viewModel.statusValue.collectAsState()
+    AppBarContent(state)
+}
+
+@Composable
+fun AppBarContent(text: String) {
     Spacer(modifier = Modifier.height(24.dp))
     Row(
         modifier = Modifier
@@ -38,7 +50,7 @@ fun AppBarContent(text: String){
             tint = WeatherTheme.colorScheme.locationIconColor
         )
         Text(
-            text = "Location",
+            text = text,
             color = WeatherTheme.colorScheme.locationFontColor,
             fontSize = 16.sp,
             fontWeight = FontWeight(500),

@@ -19,9 +19,9 @@ class TodayHourlyWeatherViewModel(
 
     private val _statusValue = MutableStateFlow(
         TodayHourlyWeatherUiState(
-            weatherCode = listOf("1"),
-            temperatures = listOf("1"),
-            weatherTime = listOf("1")
+            weatherCode = listOf("0"),
+            temperatures = listOf("0"),
+            weatherTime = listOf("0")
         )
     )
     val statusValue = _statusValue.asStateFlow()

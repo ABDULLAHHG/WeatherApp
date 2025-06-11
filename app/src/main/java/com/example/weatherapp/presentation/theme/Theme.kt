@@ -68,13 +68,13 @@ fun WeatherAppTheme(
 ) {
     val state by viewModel.statusValue.collectAsState()
 
-    val weatherColorScheme = if (state.isDay) {
+    val weatherColorScheme = if (state) {
         lightWeatherThemeColors()
     } else {
         darkWeatherThemeColors()
     }
 
-    val weatherIconPath = if (state.isDay) {
+    val weatherIconPath = if (state) {
         lightIconPath()
     } else {
         nightIconPath()
@@ -139,43 +139,41 @@ fun darkWeatherThemeColors(
     todayCardBorderColor: Color = Color(0x14FFFFFF),
     todayCardValueFontColor: Color = Color(0xDEFFFFFF),
     todayCardTitleFontColor: Color = Color(0x99FFFFFF),
+    todayCardImageBlurColor: Color = Color(0xFFC0B7FF),
 
     nextDaysLabelFontColor: Color = Color(0xFFFFFFFF),
     nextDaysCardTitleFontColor: Color = Color(0x99FFFFFF),
-    nextDaysCardValueFontColor: Color = Color(0xDEFFFFFF),
     nextDaysCardValueBorderLineFontColor: Color = Color(0x14FFFFFF),
     nextDaysCardBorderColor: Color = Color(0x14FFFFFF),
     nextDaysCardBackgroundColor: Color = Color(0xB2060414),
-    nextDaysCardIconColor: Color = Color(0xDEFFFFFF),
 
     ): WeatherColorScheme =
     WeatherColorScheme(
-        backgroundColor,
-        imageBlurColor,
-        imageBlurOpacity,
-        locationFontColor,
-        locationIconColor,
-        weatherTemperatureFontColor,
-        weatherDescriptionColor,
-        weatherRangeBoxBackgroundColor,
-        weatherRangeFontColor,
-        weatherRangeIconColor,
-        statusCardBackgroundColor,
-        statusCardBorderColor,
-        statusCardValueFontColor,
-        statusCardTitleFontColor,
-        todayLabelFontColor,
-        todayCardBackgroundColor,
-        todayCardBorderColor,
-        todayCardValueFontColor,
-        todayCardTitleFontColor,
-        nextDaysLabelFontColor,
-        nextDaysCardTitleFontColor,
-        nextDaysCardValueFontColor,
-        nextDaysCardValueBorderLineFontColor,
-        nextDaysCardBorderColor,
-        nextDaysCardBackgroundColor,
-        nextDaysCardIconColor,
+        appBackgroundColor = backgroundColor,
+        imageBlurColor = imageBlurColor,
+        imageBlurOpacity = imageBlurOpacity,
+        locationFontColor = locationFontColor,
+        locationIconColor = locationIconColor,
+        weatherTemperatureFontColor = weatherTemperatureFontColor,
+        weatherDescriptionColor = weatherDescriptionColor,
+        weatherRangeBoxBackgroundColor = weatherRangeBoxBackgroundColor,
+        weatherRangeFontColor = weatherRangeFontColor,
+        weatherRangeIconColor = weatherRangeIconColor,
+        statusCardBackgroundColor = statusCardBackgroundColor,
+        statusCardBorderColor = statusCardBorderColor,
+        statusCardValueFontColor = statusCardValueFontColor,
+        statusCardTitleFontColor = statusCardTitleFontColor,
+        todayLabelFontColor = todayLabelFontColor,
+        todayCardBackgroundColor = todayCardBackgroundColor,
+        todayCardBorderColor = todayCardBorderColor,
+        todayCardValueFontColor = todayCardValueFontColor,
+        todayCardTitleFontColor = todayCardTitleFontColor,
+        todayCardImageBlurColor = todayCardImageBlurColor,
+        nextDaysLabelFontColor = nextDaysLabelFontColor,
+        nextDaysCardTitleFontColor = nextDaysCardTitleFontColor,
+        nextDaysCardValueBorderLineFontColor = nextDaysCardValueBorderLineFontColor,
+        nextDaysCardBorderColor = nextDaysCardBorderColor,
+        nextDaysCardBackgroundColor = nextDaysCardBackgroundColor,
     )
 
 
@@ -202,51 +200,52 @@ fun lightWeatherThemeColors(
     todayCardBorderColor: Color = Color(0x14060414),
     todayCardValueFontColor: Color = Color(0xDE060414),
     todayCardTitleFontColor: Color = Color(0x99060414),
+    todayCardImageBlurColor: Color = Color(0x00FFFFFF),
 
     nextDaysLabelFontColor: Color = Color(0xFF060414),
     nextDaysCardTitleFontColor: Color = Color(0x99060414),
-    nextDaysCardValueFontColor: Color = Color(0xDE060414),
     nextDaysCardValueBorderLineFontColor: Color = Color(0x14060414),
     nextDaysCardBorderColor: Color = Color(0x14060414),
     nextDaysCardBackgroundColor: Color = Color(0xB2FFFFFF),
-    nextDaysCardIconColor: Color = Color(0x14060414),
 
     ): WeatherColorScheme =
     WeatherColorScheme(
-        backgroundColor,
-        imageBlurColor,
-        imageBlurOpacity,
-        locationFontColor,
-        locationIconColor,
-        weatherTemperatureFontColor,
-        weatherDescriptionColor,
-        weatherRangeBoxBackgroundColor,
-        weatherRangeFontColor,
-        weatherRangeIconColor,
-        statusCardBackgroundColor,
-        statusCardBorderColor,
-        statusCardValueFontColor,
-        statusCardTitleFontColor,
-        todayLabelFontColor,
-        todayCardBackgroundColor,
-        todayCardBorderColor,
-        todayCardValueFontColor,
-        todayCardTitleFontColor,
-        nextDaysLabelFontColor,
-        nextDaysCardTitleFontColor,
-        nextDaysCardValueFontColor,
-        nextDaysCardValueBorderLineFontColor,
-        nextDaysCardBorderColor,
-        nextDaysCardBackgroundColor,
-        nextDaysCardIconColor,
+        appBackgroundColor = backgroundColor,
+        imageBlurColor = imageBlurColor,
+        imageBlurOpacity = imageBlurOpacity,
+        locationFontColor = locationFontColor,
+        locationIconColor = locationIconColor,
+        weatherTemperatureFontColor = weatherTemperatureFontColor,
+        weatherDescriptionColor = weatherDescriptionColor,
+        weatherRangeBoxBackgroundColor = weatherRangeBoxBackgroundColor,
+        weatherRangeFontColor = weatherRangeFontColor,
+        weatherRangeIconColor = weatherRangeIconColor,
+        statusCardBackgroundColor = statusCardBackgroundColor,
+        statusCardBorderColor = statusCardBorderColor,
+        statusCardValueFontColor = statusCardValueFontColor,
+        statusCardTitleFontColor = statusCardTitleFontColor,
+        todayLabelFontColor = todayLabelFontColor,
+        todayCardBackgroundColor = todayCardBackgroundColor,
+        todayCardBorderColor = todayCardBorderColor,
+        todayCardValueFontColor = todayCardValueFontColor,
+        todayCardTitleFontColor = todayCardTitleFontColor,
+        todayCardImageBlurColor = todayCardImageBlurColor,
+        nextDaysLabelFontColor = nextDaysLabelFontColor,
+        nextDaysCardTitleFontColor = nextDaysCardTitleFontColor,
+        nextDaysCardValueBorderLineFontColor = nextDaysCardValueBorderLineFontColor,
+        nextDaysCardBorderColor = nextDaysCardBorderColor,
+        nextDaysCardBackgroundColor = nextDaysCardBackgroundColor,
     )
 
 
 // color scheme
 class WeatherColorScheme(
+
     val appBackgroundColor: Brush,
+
     val imageBlurColor: Color,
     val imageBlurOpacity: Float,
+
     val locationFontColor: Color,
     val locationIconColor: Color,
 
@@ -266,14 +265,13 @@ class WeatherColorScheme(
     val todayCardBorderColor: Color,
     val todayCardValueFontColor: Color,
     val todayCardTitleFontColor: Color,
+    val todayCardImageBlurColor : Color,
 
     val nextDaysLabelFontColor: Color,
     val nextDaysCardTitleFontColor: Color,
-    val nextDaysCardValueFontColor: Color,
     val nextDaysCardValueBorderLineFontColor: Color,
     val nextDaysCardBorderColor: Color,
     val nextDaysCardBackgroundColor: Color,
-    val nextDaysCardIconColor: Color,
 
     ) {
 

@@ -11,13 +11,17 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -59,7 +63,7 @@ fun TodayCard(
                 color = WeatherTheme.colorScheme.todayCardValueFontColor
             )
             Text(
-                "$time", fontSize = 16.sp,
+                time, fontSize = 16.sp,
                 letterSpacing = 0.25.sp,
                 fontFamily = urbanistFamily,
                 fontWeight = FontWeight(500),
@@ -67,15 +71,35 @@ fun TodayCard(
                 color = WeatherTheme.colorScheme.todayCardTitleFontColor
             )
         }
-        Box(contentAlignment = Alignment.TopCenter,modifier = Modifier.fillMaxHeight().width(88.dp)){
+        Box(contentAlignment = Alignment.TopCenter,modifier = Modifier.height(64.dp).width(88.dp)){
+
+            Box(
+                modifier = Modifier
+                    .offset(y = (-20).dp)
+                    .size(250.dp)
+                    .clip(CircleShape)
+                    .background(
+                        brush = Brush.radialGradient(
+                            listOf(
+                                WeatherTheme.colorScheme.todayCardImageBlurColor.copy(
+                                    alpha = WeatherTheme.colorScheme.imageBlurOpacity
+                                ),
+                                WeatherTheme.colorScheme.todayCardImageBlurColor.copy(alpha = WeatherTheme.colorScheme.imageBlurOpacity * 0.7f),
+                                WeatherTheme.colorScheme.todayCardImageBlurColor.copy(alpha = WeatherTheme.colorScheme.imageBlurOpacity * 0.01f)
+                            )
+                        )
+                    )
+                    .blur(radius = 150.dp)
+            )
             Image(
                 painter = image,
                 contentDescription = null,
                 modifier
                     .height(58.dp)
-                    .padding(bottom = 16.dp)
                     .offset(y = (-12).dp)
             )
+
         }
+
     }
 }

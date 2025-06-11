@@ -35,39 +35,41 @@ fun WeatherNextDays(
 
 @Composable
 fun WeatherNextDaysContent(state: WeatherNextDaysUiStates) {
-    Text(
-        "Next 7 Days", modifier = Modifier.padding(bottom = 12.dp),
-        fontSize = 20.sp,
-        fontFamily = urbanistFamily,
-        color = WeatherTheme.colorScheme.nextDaysLabelFontColor,
-        letterSpacing = 0.25.sp,
-        fontWeight = FontWeight(600)
-    )
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(24.dp))
-            .border(
-                1.dp,
-                WeatherTheme.colorScheme.nextDaysCardBorderColor,
-                shape = RoundedCornerShape(24.dp)
-            )
-            .background(WeatherTheme.colorScheme.nextDaysCardBackgroundColor)
-    ) {
-        state.daysNames.forEachIndexed { index, dayName ->
-            NextDaysCard(
-                dayName = dayName,
-                temperatureRange = state.rangeTemperatures[index],
-                image = painterResource(WeatherCodeMapper.weatherCodeToIconLightTheme(state.weatherCode[index]))
-            )
-            if (index != state.daysNames.size - 1) {
-                HorizontalDivider(
-                    thickness = 1.dp,
-                    color = WeatherTheme.colorScheme.nextDaysCardBorderColor
+    Column(modifier = Modifier.padding(horizontal = 12.dp)) {
+        Text(
+            "Next 7 Days", modifier = Modifier.padding(bottom = 12.dp),
+            fontSize = 20.sp,
+            fontFamily = urbanistFamily,
+            color = WeatherTheme.colorScheme.nextDaysLabelFontColor,
+            letterSpacing = 0.25.sp,
+            fontWeight = FontWeight(600)
+        )
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(24.dp))
+                .border(
+                    1.dp,
+                    WeatherTheme.colorScheme.nextDaysCardBorderColor,
+                    shape = RoundedCornerShape(24.dp)
                 )
+                .background(WeatherTheme.colorScheme.nextDaysCardBackgroundColor)
+        ) {
+            state.daysNames.forEachIndexed { index, dayName ->
+                NextDaysCard(
+                    dayName = dayName,
+                    temperatureRange = state.rangeTemperatures[index],
+                    image = painterResource(WeatherCodeMapper.weatherCodeToIconLightTheme(state.weatherCode[index]))
+                )
+                if (index != state.daysNames.size - 1) {
+                    HorizontalDivider(
+                        thickness = 1.dp,
+                        color = WeatherTheme.colorScheme.nextDaysCardBorderColor
+                    )
+                }
             }
+
+
         }
-
-
     }
 }

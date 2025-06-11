@@ -1,8 +1,6 @@
-package com.example.weatherapp.Data.repository
+package com.example.weatherapp.data.repository
 
-import android.Manifest
-import androidx.annotation.RequiresPermission
-import com.example.weatherapp.Data.local.WeatherDataSource
+import com.example.weatherapp.data.local.WeatherDataSource
 import com.example.weatherapp.logic.reposiotry.WeatherRepository
 import com.example.weatherapp.logic.entity.CurrentWeather
 import com.example.weatherapp.logic.entity.NextDays

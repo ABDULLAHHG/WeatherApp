@@ -11,7 +11,7 @@ class GetTodayHourlyTheme(
     private val locationRepository: LocationRepository
 
 ) {
-    suspend fun execute(): HourlyWeather {
+    suspend fun execute(): Boolean {
         val location = locationRepository.getCurrentLocation()
 
         val today =  weatherRepository.getTodayWeather(
@@ -24,6 +24,6 @@ class GetTodayHourlyTheme(
             today.hourlyWeather.take(25).filter {
                 (it.time.hour == todayTime.hour)
             }
-        ).hourlyWeather[0]
+        ).hourlyWeather[0].isDay
     }
 }

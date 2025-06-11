@@ -19,12 +19,12 @@ class WeatherStatusViewModel(
 ) : ViewModel() {
     private val _statusValue = MutableStateFlow(
         WeatherStatusUiState(
-            windValue = "1",
-            humidityValue = "1",
-            rainValue = "1",
-            pressureValue = "1",
-            uvValue = "1",
-            feelsLikeValue = "1"
+            windValue = "0",
+            humidityValue = "0",
+            rainValue = "0",
+            pressureValue = "0",
+            uvValue = "0",
+            feelsLikeValue = "0"
         )
     )
     val statusValue = _statusValue.asStateFlow()

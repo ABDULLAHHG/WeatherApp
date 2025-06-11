@@ -4,7 +4,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -53,8 +55,8 @@ fun StatusCard(
             tint = color,
             modifier = Modifier
                 .size(imageSize.dp)
-                .padding(bottom = 8.dp)
         )
+        Spacer(modifier = Modifier.height(8.dp))
         Column() {
             Text(
                 value,

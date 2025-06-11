@@ -1,8 +1,8 @@
-package com.example.weatherapp.Data.repository
+package com.example.weatherapp.data.repository
 
-import com.example.weatherapp.Data.remote.dto.DailyDto
-import com.example.weatherapp.Data.remote.dto.HourlyDto
-import com.example.weatherapp.Data.remote.dto.WeatherInfoDto
+import com.example.weatherapp.data.remote.dto.DailyDto
+import com.example.weatherapp.data.remote.dto.HourlyDto
+import com.example.weatherapp.data.remote.dto.WeatherInfoDto
 import com.example.weatherapp.logic.entity.CurrentWeather
 import com.example.weatherapp.logic.entity.DailyWeather
 import com.example.weatherapp.logic.entity.HourlyWeather
@@ -30,7 +30,7 @@ fun DailyDto.toNextDays(): NextDays {
 }
 
 fun HourlyDto.toTodayHourlyWeather(): TodayHourlyWeather {
-    val formatter = DateTimeFormatter.ISO_DATE_TIME // e.g., "2025-06-09T09:00"
+    val formatter = DateTimeFormatter.ISO_DATE_TIME
 
     val hourlyWeatherList = time.indices.map { index ->
         HourlyWeather(

@@ -1,4 +1,4 @@
-package com.example.weatherapp.Data.remote
+package com.example.weatherapp.data.remote
 
 
 import android.Manifest
@@ -10,7 +10,9 @@ import com.example.weatherapp.logic.entity.LocationInfo
 import com.example.weatherapp.logic.reposiotry.LocationRepository
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.Priority
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.tasks.await
 import kotlin.coroutines.resumeWithException
@@ -25,12 +27,11 @@ class LocationDataSource(
     override suspend fun getCurrentLocation(): LocationInfo {
         return try {
             val location = fusedLocationClient.getCurrentLocation(
-                com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY,
+                Priority.PRIORITY_HIGH_ACCURACY,
                 null
-
             ).await()
-
             val safeLocation = location ?: getFreshLocation()
+
 
             val cityName = getCityNameFromLatLng(safeLocation.latitude, safeLocation.longitude)
             LocationInfo(
@@ -45,12 +46,10 @@ class LocationDataSource(
 
     @RequiresPermission(allOf = [Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION])
     private suspend fun getFreshLocation(): Location = suspendCancellableCoroutine { cont ->
-        val request = com.google.android.gms.location.LocationRequest.create().apply {
-            priority = com.google.android.gms.location.Priority.PRIORITY_HIGH_ACCURACY
-            interval = 1000
-            fastestInterval = 500
-            numUpdates = 1
-        }
+        val request = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 1000).apply {
+            setMinUpdateIntervalMillis(500)
+            setMaxUpdates(1)
+        }.build()
 
         val callback = object : LocationCallback() {
             override fun onLocationResult(result: LocationResult) {

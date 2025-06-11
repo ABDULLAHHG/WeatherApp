@@ -1,6 +1,7 @@
 package com.example.weatherapp.presentation.component
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.Text
@@ -39,9 +40,9 @@ fun WeatherTodayContent(state: TodayHourlyWeatherUiState) {
         letterSpacing = 0.25.sp,
         fontFamily = urbanistFamily,
         fontWeight = FontWeight(600),
-        modifier = Modifier.padding(bottom = 24.dp)
+        modifier = Modifier.padding(bottom = 24.dp).padding(horizontal = 12.dp)
     )
-    LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+    LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp), contentPadding = PaddingValues(horizontal = 12.dp) ) {
         items(state.weatherTime.size) { index ->
             TodayCard(
                 image = painterResource(id = WeatherCodeMapper.weatherCodeToIcon(state.weatherCode[index])),

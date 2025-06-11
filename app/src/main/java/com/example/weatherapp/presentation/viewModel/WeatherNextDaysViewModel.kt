@@ -21,9 +21,9 @@ class WeatherNextDaysViewModel(
 
     private val _statusValue = MutableStateFlow(
         WeatherNextDaysUiStates(
-            daysNames = listOf("1"),
-            rangeTemperatures = listOf("1" to "1"),
-            weatherCode = listOf("1")
+            daysNames = listOf("0"),
+            rangeTemperatures = listOf("0" to "0"),
+            weatherCode = listOf("0")
         )
     )
     val statusValue = _statusValue.asStateFlow()
