@@ -13,7 +13,7 @@ class GetTodayHourlyTheme(
     suspend fun execute(): Boolean {
         val location = locationRepository.getCurrentLocation()
 
-        val today =  weatherRepository.getTodayWeather(
+        val today =  weatherRepository.getHourlyWeatherForecast(
             latitude = location.latitude.toString(),
             longitude = location.longitude.toString()
         )

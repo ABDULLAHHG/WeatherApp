@@ -12,7 +12,7 @@ class GetHourlyWeatherForecast(
 ) {
     suspend fun execute(): HourlyWeatherForecast {
         val location = locationRepository.getCurrentLocation()
-        val today =  weatherRepository.getTodayWeather(
+        val today =  weatherRepository.getHourlyWeatherForecast(
             latitude = location.latitude.toString(),
             longitude = location.longitude.toString()
         )

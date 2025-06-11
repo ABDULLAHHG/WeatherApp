@@ -18,23 +18,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.presentation.composable.NextDaysCard
-import com.example.weatherapp.presentation.composable.WeatherCodeMapper
+import com.example.weatherapp.presentation.theme.WeatherCodeMapper
 import com.example.weatherapp.presentation.theme.WeatherTheme
 import com.example.weatherapp.presentation.theme.urbanistFamily
-import com.example.weatherapp.presentation.viewModel.WeatherNextDaysViewModel
-import com.example.weatherapp.presentation.viewModel.state.WeatherNextDaysUiStates
+import com.example.weatherapp.presentation.viewModel.DailyWeatherForecastViewModel
+import com.example.weatherapp.presentation.viewModel.state.DailyWeatherForecastUiStates
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun WeatherNextDays(
-    viewModel: WeatherNextDaysViewModel = koinViewModel()
+    viewModel: DailyWeatherForecastViewModel = koinViewModel()
 ) {
     val state by viewModel.statusValue.collectAsState()
     WeatherNextDaysContent(state)
 }
 
 @Composable
-fun WeatherNextDaysContent(state: WeatherNextDaysUiStates) {
+fun WeatherNextDaysContent(state: DailyWeatherForecastUiStates) {
     Column(modifier = Modifier.padding(horizontal = 12.dp)) {
         Text(
             "Next 7 Days", modifier = Modifier.padding(bottom = 12.dp),

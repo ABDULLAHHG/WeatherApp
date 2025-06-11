@@ -14,7 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.presentation.composable.TodayCard
-import com.example.weatherapp.presentation.composable.WeatherCodeMapper
+import com.example.weatherapp.presentation.theme.WeatherCodeMapper
 import com.example.weatherapp.presentation.theme.WeatherTheme
 import com.example.weatherapp.presentation.theme.urbanistFamily
 import com.example.weatherapp.presentation.viewModel.HourlyWeatherForecastViewModel

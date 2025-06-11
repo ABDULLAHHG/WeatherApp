@@ -2,7 +2,7 @@ package com.example.weatherapp.data.repository
 
 import android.Manifest
 import androidx.annotation.RequiresPermission
-import com.example.weatherapp.data.remote.LocationDataSource
+import com.example.weatherapp.data.datasource.LocationDataSource
 import com.example.weatherapp.logic.entity.LocationInfo
 import com.example.weatherapp.logic.reposiotry.LocationRepository
 

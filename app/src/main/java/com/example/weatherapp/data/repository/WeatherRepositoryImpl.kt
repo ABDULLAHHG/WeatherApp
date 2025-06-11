@@ -1,9 +1,13 @@
 package com.example.weatherapp.data.repository
 
-import com.example.weatherapp.data.local.WeatherDataSource
+import com.example.weatherapp.data.datasource.remote.WeatherDataSource
+import com.example.weatherapp.data.repository.mapper.toCurrentWeather
+import com.example.weatherapp.data.repository.mapper.toHourlyWeatherForecast
+import com.example.weatherapp.data.repository.mapper.toDailyWeatherForecast
+import com.example.weatherapp.data.repository.mapper.toWeatherStatus
 import com.example.weatherapp.logic.reposiotry.WeatherRepository
 import com.example.weatherapp.logic.entity.CurrentWeather
-import com.example.weatherapp.logic.entity.NextDays
+import com.example.weatherapp.logic.entity.DailyWeatherForecast
 import com.example.weatherapp.logic.entity.HourlyWeatherForecast
 import com.example.weatherapp.logic.entity.TodayWeatherStatus
 
@@ -14,7 +18,7 @@ class WeatherRepositoryImpl(
         return weatherDataSource.getCurrentWeather(latitude , longitude).toCurrentWeather()
     }
 
-    override suspend fun getTodayWeather(latitude: String, longitude: String): HourlyWeatherForecast {
+    override suspend fun getHourlyWeatherForecast(latitude: String, longitude: String): HourlyWeatherForecast {
         return weatherDataSource.getTodayWeather(latitude , longitude).toHourlyWeatherForecast()
     }
 
@@ -22,7 +26,7 @@ class WeatherRepositoryImpl(
         return weatherDataSource.getStatusWeather(latitude , longitude).toWeatherStatus()
     }
 
-    override suspend fun getDailyWeather(latitude: String, longitude: String): NextDays {
-        return weatherDataSource.getDailyWeather(latitude , longitude).toNextDays()
+    override suspend fun getDailyWeather(latitude: String, longitude: String): DailyWeatherForecast {
+        return weatherDataSource.getDailyWeather(latitude , longitude).toDailyWeatherForecast()
     }
 }

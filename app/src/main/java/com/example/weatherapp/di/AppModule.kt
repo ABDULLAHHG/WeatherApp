@@ -2,15 +2,15 @@ package com.example.weatherapp.di
 
 
 import android.location.Geocoder
-import com.example.weatherapp.data.local.WeatherDataSource
-import com.example.weatherapp.data.remote.LocationDataSource
-import com.example.weatherapp.data.remote.WeatherApi
+import com.example.weatherapp.data.datasource.remote.WeatherDataSource
+import com.example.weatherapp.data.datasource.LocationDataSource
+import com.example.weatherapp.data.datasource.remote.api.WeatherApi
 import com.example.weatherapp.data.repository.LocationRepositoryImpl
 import com.example.weatherapp.data.repository.WeatherRepositoryImpl
 import com.example.weatherapp.logic.reposiotry.LocationRepository
 import com.example.weatherapp.logic.reposiotry.WeatherRepository
 import com.example.weatherapp.logic.usecase.GetCurrentWeather
-import com.example.weatherapp.logic.usecase.GetDailyWeather
+import com.example.weatherapp.logic.usecase.GetDailyWeatherForecast
 import com.example.weatherapp.logic.usecase.GetLocationUseCase
 import com.example.weatherapp.logic.usecase.GetTodayHourlyTheme
 import com.example.weatherapp.logic.usecase.GetHourlyWeatherForecast
@@ -19,7 +19,7 @@ import com.example.weatherapp.presentation.viewModel.CurrentWeatherViewModel
 import com.example.weatherapp.presentation.viewModel.LocationViewModel
 import com.example.weatherapp.presentation.viewModel.TodayHourlyThemeViewModel
 import com.example.weatherapp.presentation.viewModel.HourlyWeatherForecastViewModel
-import com.example.weatherapp.presentation.viewModel.WeatherNextDaysViewModel
+import com.example.weatherapp.presentation.viewModel.DailyWeatherForecastViewModel
 import com.example.weatherapp.presentation.viewModel.WeatherStatusViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -48,7 +48,7 @@ val appModule = module {
 
     // use cases
     single { GetCurrentWeather(get(), get()) }
-    single { GetDailyWeather(get(), get()) }
+    single { GetDailyWeatherForecast(get(), get()) }
     single { GetHourlyWeatherForecast(get(), get()) }
     single { GetWeatherStatus(get(), get()) }
     single { GetTodayHourlyTheme(get(), get()) }
@@ -58,7 +58,7 @@ val appModule = module {
     viewModel { WeatherStatusViewModel(get()) }
     viewModel { HourlyWeatherForecastViewModel(get()) }
     viewModel { CurrentWeatherViewModel(get()) }
-    viewModel { WeatherNextDaysViewModel(get()) }
+    viewModel { DailyWeatherForecastViewModel(get()) }
     viewModel { TodayHourlyThemeViewModel(get()) }
     viewModel { LocationViewModel(get()) }
 

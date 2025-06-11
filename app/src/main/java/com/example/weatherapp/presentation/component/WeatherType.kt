@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.R
-import com.example.weatherapp.presentation.composable.WeatherCodeMapper
+import com.example.weatherapp.presentation.theme.WeatherCodeMapper
 import com.example.weatherapp.presentation.composable.animateAlignmentAsState
 import com.example.weatherapp.presentation.theme.WeatherTheme
 import com.example.weatherapp.presentation.theme.urbanistFamily
