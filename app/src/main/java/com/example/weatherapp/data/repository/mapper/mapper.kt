@@ -1,5 +1,6 @@
 package com.example.weatherapp.data.repository.mapper
 
+
 import com.example.weatherapp.data.datasource.remote.dto.DailyWeatherForecastDto
 import com.example.weatherapp.data.datasource.remote.dto.HourlyWeatherForecastDto
 import com.example.weatherapp.data.datasource.remote.dto.WeatherInfoDto
@@ -20,9 +21,9 @@ fun DailyWeatherForecastDto.toDailyWeatherForecast(): DailyWeatherForecast {
     val dailyWeatherList = time.indices.map { index ->
         DailyWeather(
             date = LocalDate.parse(time[index], formatter),
-            minTemperature = temperature_2m_min[index],
-            maxTemperature = temperature_2m_max[index],
-            weatherCode = weather_code[index]
+            minTemperature = temperature2mMin[index],
+            maxTemperature = temperature2mMax[index],
+            weatherCode = weatherCode[index]
         )
     }
 
@@ -35,9 +36,9 @@ fun HourlyWeatherForecastDto.toHourlyWeatherForecast(): HourlyWeatherForecast {
     val hourlyWeatherList = time.indices.map { index ->
         HourlyWeather(
             time = LocalDateTime.parse(time[index], formatter),
-            temperature = temperature_2m[index],
-            weatherCode = weather_code[index],
-            isDay = is_day[index] == 1
+            temperature = temperature2m[index],
+            weatherCode = weatherCode[index],
+            isDay = isDay[index] == 1
         )
     }
 
@@ -47,23 +48,23 @@ fun HourlyWeatherForecastDto.toHourlyWeatherForecast(): HourlyWeatherForecast {
 
 fun WeatherInfoDto.toWeatherStatus(): TodayWeatherStatus {
     return TodayWeatherStatus(
-        windSpeed = current.wind_speed_10m,
-        humidity = current.relative_humidity_2m,
-        rainVolume = daily.precipitation_probability_max.firstOrNull() ?: 0.0,
-        pressure = current.pressure_msl,
-        uvIndex = daily.uv_index_max.firstOrNull() ?: 0.0,
-        feelsLike = current.apparent_temperature
+        windSpeed = current.windSpeed10m,
+        humidity = current.relativeHumidity2m,
+        rainVolume = daily.precipitationProbabilityMax.firstOrNull() ?: 0.0,
+        pressure = current.pressureMsl,
+        uvIndex = daily.uvIndexMax.firstOrNull() ?: 0.0,
+        feelsLike = current.apparentTemperature
     )
 }
 
 fun WeatherInfoDto.toCurrentWeather(): CurrentWeather {
-    val minTemp = daily.temperature_2m_min.first()
-    val maxTemp = daily.temperature_2m_max.first()
+    val minTemp = daily.temperature2mMin.first()
+    val maxTemp = daily.temperature2mMax.first()
 
     return CurrentWeather(
-        temperature2m = current.temperature_2m,
-        weatherCode = current.weather_code,
-        isDay = current.is_day,
+        temperature2m = current.temperature2m,
+        weatherCode = current.weatherCode,
+        isDay = current.isDay,
         temperatureRange = minTemp to maxTemp
     )
 }

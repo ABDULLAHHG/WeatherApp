@@ -1,14 +1,15 @@
 package com.example.weatherapp.data.datasource.remote.dto
 
-import kotlinx.serialization.Serializable
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class DailyWeatherForecastDto(
-    val time: List<String>,
-    val temperature_2m_max: List<Double>,
-    val temperature_2m_min: List<Double>,
-    val weather_code: List<Int>,
-    val uv_index_max: List<Double>,
-    val precipitation_probability_max : List<Double>
+    @SerialName("time") val time: List<String>,
+    @SerialName("temperature_2m_max") val temperature2mMax: List<Double>,
+    @SerialName("temperature_2m_min") val temperature2mMin: List<Double>,
+    @SerialName("weather_code") val weatherCode: List<Int>,
+    @SerialName("uv_index_max") val uvIndexMax: List<Double>,
+    @SerialName("precipitation_probability_max") val precipitationProbabilityMax: List<Double>
 )
