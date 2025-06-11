@@ -64,7 +64,7 @@ fun WeatherInfoDto.toCurrentWeather(): CurrentWeather {
     return CurrentWeather(
         temperature2m = current.temperature2m,
         weatherCode = current.weatherCode,
-        isDay = current.isDay,
+        isDay = current.isDay == 1,
         temperatureRange = minTemp to maxTemp
     )
 }
