@@ -1,50 +1,55 @@
 package com.example.weatherapp.presentation.screen
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.example.weatherapp.R
+import com.example.weatherapp.presentation.component.AppBar
 import com.example.weatherapp.presentation.component.CurrentWeather
 import com.example.weatherapp.presentation.component.WeatherNextDays
 import com.example.weatherapp.presentation.component.WeatherScaffold
 import com.example.weatherapp.presentation.component.WeatherStatus
 import com.example.weatherapp.presentation.component.WeatherToday
-import com.example.weatherapp.presentation.composable.AppBarContent
 import com.example.weatherapp.presentation.theme.WeatherAppTheme
 import com.example.weatherapp.presentation.theme.WeatherTheme
-import com.example.weatherapp.presentation.theme.urbanistFamily
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+) {
+    val lazyListState = rememberLazyListState()
+    val rawScroll = remember { derivedStateOf { lazyListState.firstVisibleItemScrollOffset } }
+
+    val maxScrollPx = 120f
+    val scrollProgress = (rawScroll.value / maxScrollPx).coerceIn(0f, 1f)
+    MainScreenContent(scrollProgress, lazyListState)
+}
+
+@Composable
+fun MainScreenContent(scrollProgress: Float, scrollState: LazyListState) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .background(WeatherTheme.colorScheme.appBackgroundColor)
-            .padding(horizontal = 12.dp)
-    ) {
-        item() {
+//            .statusBarsPadding()
+        ,
+        state = scrollState,
+
+        ) {
+        item {
             WeatherScaffold() {
-                AppBarContent("Location")
+                AppBar()
             }
-            CurrentWeather()
+            CurrentWeather(scrollProgress = scrollProgress)
             Spacer(modifier = Modifier.height(24.dp))
             WeatherStatus()
             Spacer(modifier = Modifier.height(24.dp))
@@ -52,8 +57,6 @@ fun MainScreen() {
             Spacer(modifier = Modifier.height(24.dp))
             WeatherNextDays()
             Spacer(modifier = Modifier.height(24.dp))
-//        WeatherNextDays()
-
         }
     }
 }

@@ -3,6 +3,8 @@ package com.example.weatherapp.presentation.component
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -39,7 +41,7 @@ fun WeatherStatusContent(
     uvValue: String,
     feelsLikeValue: String
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+    Column(verticalArrangement = Arrangement.spacedBy(6.dp),modifier = Modifier.padding(horizontal = 12.dp)) {
         Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
             StatusCard(
                 image = ImageVector.vectorResource(R.drawable.fast_wind),

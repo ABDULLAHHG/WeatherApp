@@ -47,7 +47,9 @@ dependencies {
     implementation("io.ktor:ktor-client-content-negotiation:3.1.2")
     implementation("io.ktor:ktor-serialization-kotlinx-json:3.1.2")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
-
+    implementation ("androidx.compose.animation:animation:1.6.0") // Or the latest version
+    implementation ("androidx.compose.material:material:1.6.0") // Or the latest version
+    implementation ("androidx.compose.ui:ui:1.6.0") // Or the latest version
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
     implementation("io.ktor:ktor-client-android:2.3.11")
