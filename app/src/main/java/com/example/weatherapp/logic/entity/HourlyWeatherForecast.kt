@@ -1,7 +1,5 @@
 package com.example.weatherapp.logic.entity
 
-import java.time.LocalDateTime
-
-data class TodayHourlyWeather (
+data class HourlyWeatherForecast (
     val hourlyWeather: List<HourlyWeather>,
 )

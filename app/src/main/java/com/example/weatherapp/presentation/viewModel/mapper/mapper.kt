@@ -2,11 +2,11 @@ package com.example.weatherapp.presentation.viewModel.mapper
 
 import com.example.weatherapp.logic.entity.CurrentWeather
 import com.example.weatherapp.logic.entity.NextDays
-import com.example.weatherapp.logic.entity.TodayHourlyWeather
+import com.example.weatherapp.logic.entity.HourlyWeatherForecast
 import com.example.weatherapp.logic.entity.TodayWeatherStatus
 import com.example.weatherapp.presentation.composable.WeatherCodeMapper
 import com.example.weatherapp.presentation.viewModel.state.CurrentWeatherUiState
-import com.example.weatherapp.presentation.viewModel.state.TodayHourlyWeatherUiState
+import com.example.weatherapp.presentation.viewModel.state.HourlyWeatherForecastUiState
 import com.example.weatherapp.presentation.viewModel.state.WeatherNextDaysUiStates
 import com.example.weatherapp.presentation.viewModel.state.WeatherStatusUiState
 import java.time.format.DateTimeFormatter
@@ -44,14 +44,14 @@ fun NextDays.toUiState(): WeatherNextDaysUiStates {
 }
 
 
-fun TodayHourlyWeather.toUiState(): TodayHourlyWeatherUiState {
+fun HourlyWeatherForecast.toUiState(): HourlyWeatherForecastUiState {
     val timeFormatter = DateTimeFormatter.ofPattern("HH:mm", Locale.getDefault())
 
     val weatherCode = hourlyWeather.map { (it.weatherCode).toString() }
     val temperatures = hourlyWeather.map { "${it.temperature.toInt()}°C" }
     val weatherTime = hourlyWeather.map { it.time.format(timeFormatter) }
 
-    return TodayHourlyWeatherUiState(
+    return HourlyWeatherForecastUiState(
         weatherCode = weatherCode,
         temperatures = temperatures,
         weatherTime = weatherTime

@@ -13,12 +13,12 @@ import com.example.weatherapp.logic.usecase.GetCurrentWeather
 import com.example.weatherapp.logic.usecase.GetDailyWeather
 import com.example.weatherapp.logic.usecase.GetLocationUseCase
 import com.example.weatherapp.logic.usecase.GetTodayHourlyTheme
-import com.example.weatherapp.logic.usecase.GetTodayHourlyWeather
+import com.example.weatherapp.logic.usecase.GetHourlyWeatherForecast
 import com.example.weatherapp.logic.usecase.GetWeatherStatus
 import com.example.weatherapp.presentation.viewModel.CurrentWeatherViewModel
 import com.example.weatherapp.presentation.viewModel.LocationViewModel
 import com.example.weatherapp.presentation.viewModel.TodayHourlyThemeViewModel
-import com.example.weatherapp.presentation.viewModel.TodayHourlyWeatherViewModel
+import com.example.weatherapp.presentation.viewModel.HourlyWeatherForecastViewModel
 import com.example.weatherapp.presentation.viewModel.WeatherNextDaysViewModel
 import com.example.weatherapp.presentation.viewModel.WeatherStatusViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -49,14 +49,14 @@ val appModule = module {
     // use cases
     single { GetCurrentWeather(get(), get()) }
     single { GetDailyWeather(get(), get()) }
-    single { GetTodayHourlyWeather(get(), get()) }
+    single { GetHourlyWeatherForecast(get(), get()) }
     single { GetWeatherStatus(get(), get()) }
     single { GetTodayHourlyTheme(get(), get()) }
     single { GetLocationUseCase(get()) }
 
     // view models
     viewModel { WeatherStatusViewModel(get()) }
-    viewModel { TodayHourlyWeatherViewModel(get()) }
+    viewModel { HourlyWeatherForecastViewModel(get()) }
     viewModel { CurrentWeatherViewModel(get()) }
     viewModel { WeatherNextDaysViewModel(get()) }
     viewModel { TodayHourlyThemeViewModel(get()) }

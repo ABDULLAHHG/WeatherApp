@@ -17,14 +17,14 @@ import com.example.weatherapp.presentation.composable.TodayCard
 import com.example.weatherapp.presentation.composable.WeatherCodeMapper
 import com.example.weatherapp.presentation.theme.WeatherTheme
 import com.example.weatherapp.presentation.theme.urbanistFamily
-import com.example.weatherapp.presentation.viewModel.TodayHourlyWeatherViewModel
-import com.example.weatherapp.presentation.viewModel.state.TodayHourlyWeatherUiState
+import com.example.weatherapp.presentation.viewModel.HourlyWeatherForecastViewModel
+import com.example.weatherapp.presentation.viewModel.state.HourlyWeatherForecastUiState
 import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
 fun WeatherToday(
-    viewModel: TodayHourlyWeatherViewModel = koinViewModel()
+    viewModel: HourlyWeatherForecastViewModel = koinViewModel()
 ) {
     val state by viewModel.statusValue.collectAsState()
     WeatherTodayContent(state)
@@ -32,7 +32,7 @@ fun WeatherToday(
 
 
 @Composable
-fun WeatherTodayContent(state: TodayHourlyWeatherUiState) {
+fun WeatherTodayContent(state: HourlyWeatherForecastUiState) {
     Text(
         "Today",
         fontSize = 20.sp,

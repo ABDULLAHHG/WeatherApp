@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -38,7 +39,9 @@ fun MainScreenContent(scrollProgress: Float, scrollState: LazyListState) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .background(WeatherTheme.colorScheme.appBackgroundColor),
+            .background(WeatherTheme.colorScheme.appBackgroundColor)
+//            .statusBarsPadding()
+        ,
         state = scrollState,
 
         ) {

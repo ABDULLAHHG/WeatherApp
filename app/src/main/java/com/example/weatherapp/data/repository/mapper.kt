@@ -7,7 +7,7 @@ import com.example.weatherapp.logic.entity.CurrentWeather
 import com.example.weatherapp.logic.entity.DailyWeather
 import com.example.weatherapp.logic.entity.HourlyWeather
 import com.example.weatherapp.logic.entity.NextDays
-import com.example.weatherapp.logic.entity.TodayHourlyWeather
+import com.example.weatherapp.logic.entity.HourlyWeatherForecast
 import com.example.weatherapp.logic.entity.TodayWeatherStatus
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -29,7 +29,7 @@ fun DailyDto.toNextDays(): NextDays {
     return NextDays(daysWeather = dailyWeatherList)
 }
 
-fun HourlyDto.toTodayHourlyWeather(): TodayHourlyWeather {
+fun HourlyDto.toHourlyWeatherForecast(): HourlyWeatherForecast {
     val formatter = DateTimeFormatter.ISO_DATE_TIME
 
     val hourlyWeatherList = time.indices.map { index ->
@@ -41,7 +41,7 @@ fun HourlyDto.toTodayHourlyWeather(): TodayHourlyWeather {
         )
     }
 
-    return TodayHourlyWeather(hourlyWeather = hourlyWeatherList)
+    return HourlyWeatherForecast(hourlyWeather = hourlyWeatherList)
 
 }
 

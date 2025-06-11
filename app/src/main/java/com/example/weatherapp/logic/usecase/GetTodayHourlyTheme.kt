@@ -1,8 +1,7 @@
 package com.example.weatherapp.logic.usecase
 
 import com.example.weatherapp.logic.reposiotry.WeatherRepository
-import com.example.weatherapp.logic.entity.HourlyWeather
-import com.example.weatherapp.logic.entity.TodayHourlyWeather
+import com.example.weatherapp.logic.entity.HourlyWeatherForecast
 import com.example.weatherapp.logic.reposiotry.LocationRepository
 import java.time.LocalDateTime
 
@@ -20,7 +19,7 @@ class GetTodayHourlyTheme(
         )
         val todayTime = LocalDateTime.now()
 
-        return TodayHourlyWeather(
+        return HourlyWeatherForecast(
             today.hourlyWeather.take(25).filter {
                 (it.time.hour == todayTime.hour)
             }

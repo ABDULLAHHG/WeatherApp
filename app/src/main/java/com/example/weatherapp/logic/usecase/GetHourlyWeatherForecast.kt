@@ -1,16 +1,16 @@
 package com.example.weatherapp.logic.usecase
 
 import com.example.weatherapp.logic.reposiotry.WeatherRepository
-import com.example.weatherapp.logic.entity.TodayHourlyWeather
+import com.example.weatherapp.logic.entity.HourlyWeatherForecast
 import com.example.weatherapp.logic.reposiotry.LocationRepository
 import java.time.LocalDateTime
 
-class GetTodayHourlyWeather(
+class GetHourlyWeatherForecast(
     private val weatherRepository: WeatherRepository,
     private val locationRepository: LocationRepository
 
 ) {
-    suspend fun execute(): TodayHourlyWeather {
+    suspend fun execute(): HourlyWeatherForecast {
         val location = locationRepository.getCurrentLocation()
         val today =  weatherRepository.getTodayWeather(
             latitude = location.latitude.toString(),
@@ -18,7 +18,7 @@ class GetTodayHourlyWeather(
         )
         val todayTime = LocalDateTime.now()
 
-        return TodayHourlyWeather(
+        return HourlyWeatherForecast(
             today.hourlyWeather.take(24).filter {
                 (it.time.hour > todayTime.hour)
             }

@@ -4,7 +4,7 @@ import com.example.weatherapp.data.local.WeatherDataSource
 import com.example.weatherapp.logic.reposiotry.WeatherRepository
 import com.example.weatherapp.logic.entity.CurrentWeather
 import com.example.weatherapp.logic.entity.NextDays
-import com.example.weatherapp.logic.entity.TodayHourlyWeather
+import com.example.weatherapp.logic.entity.HourlyWeatherForecast
 import com.example.weatherapp.logic.entity.TodayWeatherStatus
 
 class WeatherRepositoryImpl(
@@ -14,8 +14,8 @@ class WeatherRepositoryImpl(
         return weatherDataSource.getCurrentWeather(latitude , longitude).toCurrentWeather()
     }
 
-    override suspend fun getTodayWeather(latitude: String, longitude: String): TodayHourlyWeather {
-        return weatherDataSource.getTodayWeather(latitude , longitude).toTodayHourlyWeather()
+    override suspend fun getTodayWeather(latitude: String, longitude: String): HourlyWeatherForecast {
+        return weatherDataSource.getTodayWeather(latitude , longitude).toHourlyWeatherForecast()
     }
 
     override suspend fun getStatusWeather(latitude: String, longitude: String): TodayWeatherStatus {

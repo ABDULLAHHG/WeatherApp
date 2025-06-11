@@ -12,7 +12,7 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 
-class WeatherApi(url: String) {
+class WeatherApi() {
 
     @OptIn(ExperimentalSerializationApi::class)
     private val client = HttpClient(CIO) {
